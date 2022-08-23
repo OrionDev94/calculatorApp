@@ -1,35 +1,53 @@
 let numberBtn = document.querySelector(".numbers"),
   outputField = document.getElementById("outputField"),
-  clearBtn = document.querySelector(".clear"),
-  largeNumber = [];
+  clearBtn = document.querySelector("#clear"),
+  operatorBtns = document.querySelectorAll(".operators"),
+  numberOne = [],
+  numberTwo = [],
+  copieOfNumberOne = [];
 
-//Display start
+// Display start
 outputField.innerHTML = 0;
 
-//Select all Buttons with digit and converts them to text
-document.querySelectorAll(".numbers").forEach((number) => {
-  number.addEventListener("click", () => {
-    addDigitToArr(number.textContent);
+// Select all Buttons with digit and converts them to text
+document.querySelectorAll(".numbers").forEach((el) => {
+  el.addEventListener("click", () => {
+    addDigitToArr(el.textContent);
   });
 });
 
-//Shows the Digit Array in outputfield
+// Shows the digit array in outputfield
 function showDigit(digit) {
   outputField.innerHTML = digit;
 }
 
-//Set the digit of clicked button at the beginning Array
+// Set the digit of clicked button at the beginning Array
 function addDigitToArr(digit) {
-  largeNumber.shift(digit);
-  let finalNumber = largeNumber.join("");
+  numberOne.push(digit);
+  let finalNumber = numberOne.join("");
   showDigit(finalNumber);
+  console.log(finalNumber);
 }
 
-console.log(clearBtn);
-
+// Clear all
 clearBtn.addEventListener("click", function () {
-  largeNumber.length = 0;
-  outputField.innerHTML = "";  
-  console.log(largeNumber.length);
-})
+  numberOne.length = 0;
+  outputField.innerHTML = "0";
+});
 
+// Clear number and start new array/number
+function clearDisplay() {}
+
+// Rules the function of operator buttons --> should execute by pressing a button
+function operatorRules() {
+  if (operatorBtns)
+    
+}
+// Press operator button
+additionBtn.addEventListener("click", function () {
+  showDigit("+");
+  copieOfNumberOne = numberOne.slice();
+
+  console.log(copieOfNumberOne);
+  w;
+});
