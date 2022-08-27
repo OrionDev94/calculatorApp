@@ -1,9 +1,6 @@
 let numberBtn = document.querySelector(".numbers"),
   clearBtn = document.querySelector("#clear"),
   operatorBtns = document.querySelector(".operators"),
-  numberOne,
-  numberTwo,
-  operator,
   result = "",
   equal = document.querySelector("#equal"),
   interim;
