@@ -1,53 +1,84 @@
 let numberBtn = document.querySelector(".numbers"),
-  outputField = document.getElementById("outputField"),
   clearBtn = document.querySelector("#clear"),
-  operatorBtns = document.querySelectorAll(".operators"),
-  numberOne = [],
-  numberTwo = [],
-  copieOfNumberOne = [];
+  operatorBtns = document.querySelector(".operators"),
+  numberOne,
+  numberTwo,
+  operator,
+  result = "",
+  equal = document.querySelector("#equal"),
+  interim;
+
+// Object with data fot calculation
+var calculationValue = {
+  numberOne: [],
+  numberTwo: [],
+  operator: null,
+};
 
 // Display start
+var outputField = document.getElementById("outputField");
 outputField.innerHTML = 0;
 
 // Select all Buttons with digit and converts them to text
-document.querySelectorAll(".numbers").forEach((el) => {
-  el.addEventListener("click", () => {
-    addDigitToArr(el.textContent);
+document.querySelectorAll(".numbers").forEach((numberBtn) => {
+  numberBtn.addEventListener("click", () => {
+    if (typeof calculationValue.operator !== null) {
+      calculationValue.numberOne.push(numberBtn.value);
+      var digitOne = calculationValue.numberOne.join("");
+      showDigit(digitOne);
+    } else {
+      calculationValue.numberTwo.push(numberBtn.value);
+      var digitTwo = calculationValue.numberTwo.join("");
+      var operatorSign = calculationValue.operator.textContent;
+      showDigit(digitOne + operatorSign + digitTwo);
+    }
   });
 });
 
-// Shows the digit array in outputfield
-function showDigit(digit) {
-  outputField.innerHTML = digit;
-}
-
-// Set the digit of clicked button at the beginning Array
-function addDigitToArr(digit) {
-  numberOne.push(digit);
-  let finalNumber = numberOne.join("");
-  showDigit(finalNumber);
-  console.log(finalNumber);
-}
-
-// Clear all
-clearBtn.addEventListener("click", function () {
-  numberOne.length = 0;
-  outputField.innerHTML = "0";
+// Press operator button
+document.querySelectorAll(".operators").forEach((operator) => {
+  operator.addEventListener("click", () => {
+    interim = operator.textContent;
+    outputField = interim;
+  });
 });
 
-// Clear number and start new array/number
-function clearDisplay() {}
+// Clear all
+clearBtn.addEventListener("click", () => {
+  for (var objectKey in calculationValues) {
+    if (calculationValues.hasOwnProperty(objectKey)) {
+      delete calculationValues[objectKey];
+      outputField.innerHTML = 0;
+    }
+  }
+});
 
-// Rules the function of operator buttons --> should execute by pressing a button
-function operatorRules() {
-  if (operatorBtns)
-    
+// Set the sign of clicked button at the beginning Array
+// function addDigitToArr(sign) {
+//   if (sign === "+" || sign === "-" || sign === "/" || sign === "*") {
+//     // Add values to object
+//     calculationValues.operator = sign;
+//   } else if (calculationValues.firstNumber) {
+//     calculationValues.secondNumber = sign;
+//     showDigit(calculationValues.secondNumber);
+//   } else {
+//     calculationValues.firstNumber = sign;
+//     showDigit(calculationValues.firstNumber);
+//   }
+//   console.log(calculationValues.secondNumber);
+// }
+
+// Shows the digit array in outputfield
+function showDigit(calculation) {
+  outputField.innerHTML = calculation;
 }
-// Press operator button
-additionBtn.addEventListener("click", function () {
-  showDigit("+");
-  copieOfNumberOne = numberOne.slice();
 
-  console.log(copieOfNumberOne);
-  w;
+// Show result
+equal.addEventListener("click", () => {
+  let result =
+    calculationValues.firstNumber +
+    calculationValues.operator +
+    calculationValues.secondNumber;
+  outputField.innerHTML = result;
+  console.log(result);
 });
