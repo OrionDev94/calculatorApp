@@ -3,13 +3,20 @@ let numberBtn = document.querySelector(".numbers"),
   operatorBtns = document.querySelector(".operators"),
   result = "",
   equal = document.querySelector("#equal"),
-  interim;
+  interim,
+  digitOne,
+  digitTwo;
 
-// Object with data fot calculation
+// Object with data for calculation
 var calculationValue = {
   numberOne: [],
   numberTwo: [],
   operator: null,
+  reset: function () {
+    this.numberOne = [];
+    this.numberTwo = [];
+    this.operator = null;
+  },
 };
 
 // Display start
@@ -19,15 +26,17 @@ outputField.innerHTML = 0;
 // Select all Buttons with digit and converts them to text
 document.querySelectorAll(".numbers").forEach((numberBtn) => {
   numberBtn.addEventListener("click", () => {
-    if (typeof calculationValue.operator !== null) {
-      calculationValue.numberOne.push(numberBtn.value);
-      var digitOne = calculationValue.numberOne.join("");
-      showDigit(digitOne);
-    } else {
+    if (calculationValue.operator !== null) {
       calculationValue.numberTwo.push(numberBtn.value);
-      var digitTwo = calculationValue.numberTwo.join("");
-      var operatorSign = calculationValue.operator.textContent;
-      showDigit(digitOne + operatorSign + digitTwo);
+      digitTwo = calculationValue.numberTwo.join("");
+      outputField.innerHTML = calculationValue.numberTwo;
+      showDigit(digitTwo);
+      console.log(digitTwo);
+    } else {
+      calculationValue.numberOne.push(numberBtn.value);
+      digitOne = calculationValue.numberOne.join("");
+      showDigit(digitOne);
+      console.log(digitOne);
     }
   });
 });
@@ -35,35 +44,20 @@ document.querySelectorAll(".numbers").forEach((numberBtn) => {
 // Press operator button
 document.querySelectorAll(".operators").forEach((operator) => {
   operator.addEventListener("click", () => {
-    interim = operator.textContent;
-    outputField = interim;
+    if (calculationValue.numberOne !== []) {
+      calculationValue.operator = operator.value;
+      showDigit(calculationValue.operator);
+      console.log(calculationValue.operator);
+    }
   });
 });
 
 // Clear all
 clearBtn.addEventListener("click", () => {
-  for (var objectKey in calculationValues) {
-    if (calculationValues.hasOwnProperty(objectKey)) {
-      delete calculationValues[objectKey];
-      outputField.innerHTML = 0;
-    }
-  }
+  calculationValue.reset();
+  outputField.innerHTML = 0;
+  console.log(calculationValue);
 });
-
-// Set the sign of clicked button at the beginning Array
-// function addDigitToArr(sign) {
-//   if (sign === "+" || sign === "-" || sign === "/" || sign === "*") {
-//     // Add values to object
-//     calculationValues.operator = sign;
-//   } else if (calculationValues.firstNumber) {
-//     calculationValues.secondNumber = sign;
-//     showDigit(calculationValues.secondNumber);
-//   } else {
-//     calculationValues.firstNumber = sign;
-//     showDigit(calculationValues.firstNumber);
-//   }
-//   console.log(calculationValues.secondNumber);
-// }
 
 // Shows the digit array in outputfield
 function showDigit(calculation) {
@@ -72,10 +66,26 @@ function showDigit(calculation) {
 
 // Show result
 equal.addEventListener("click", () => {
-  let result =
-    calculationValues.firstNumber +
-    calculationValues.operator +
-    calculationValues.secondNumber;
-  outputField.innerHTML = result;
-  console.log(result);
+  if (calculationValue.operator === "+") {
+    // Unary plus operator to convert them to numbers first
+    var result = +digitOne + +digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "-") {
+    var result = digitOne - digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "*") {
+    var result = digitOne * digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "/") {
+    var result = digitOne / digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "%") {
+    var result = (digitOne %= digitTwo);
+    outputField.innerHTML = result;
+    console.log(result);
+  }
 });
