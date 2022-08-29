@@ -1,35 +1,91 @@
 let numberBtn = document.querySelector(".numbers"),
-  outputField = document.getElementById("outputField"),
-  clearBtn = document.querySelector(".clear"),
-  largeNumber = [];
+  clearBtn = document.querySelector("#clear"),
+  operatorBtns = document.querySelector(".operators"),
+  result = "",
+  equal = document.querySelector("#equal"),
+  interim,
+  digitOne,
+  digitTwo;
 
-//Display start
+// Object with data for calculation
+var calculationValue = {
+  numberOne: [],
+  numberTwo: [],
+  operator: null,
+  reset: function () {
+    this.numberOne = [];
+    this.numberTwo = [];
+    this.operator = null;
+  },
+};
+
+// Display start
+var outputField = document.getElementById("outputField");
 outputField.innerHTML = 0;
 
-//Select all Buttons with digit and converts them to text
-document.querySelectorAll(".numbers").forEach((number) => {
-  number.addEventListener("click", () => {
-    addDigitToArr(number.textContent);
+// Select all Buttons with digit and converts them to text
+document.querySelectorAll(".numbers").forEach((numberBtn) => {
+  numberBtn.addEventListener("click", () => {
+    if (calculationValue.operator !== null) {
+      calculationValue.numberTwo.push(numberBtn.value);
+      digitTwo = calculationValue.numberTwo.join("");
+      outputField.innerHTML = calculationValue.numberTwo;
+      showDigit(digitTwo);
+      console.log(digitTwo);
+    } else {
+      calculationValue.numberOne.push(numberBtn.value);
+      digitOne = calculationValue.numberOne.join("");
+      showDigit(digitOne);
+      console.log(digitOne);
+    }
   });
 });
 
-//Shows the Digit Array in outputfield
-function showDigit(digit) {
-  outputField.innerHTML = digit;
+// Press operator button
+document.querySelectorAll(".operators").forEach((operator) => {
+  operator.addEventListener("click", () => {
+    if (calculationValue.numberOne !== []) {
+      calculationValue.operator = operator.value;
+      showDigit(calculationValue.operator);
+      console.log(calculationValue.operator);
+    }
+  });
+});
+
+// Clear all
+clearBtn.addEventListener("click", () => {
+  calculationValue.reset();
+  outputField.innerHTML = 0;
+  console.log(calculationValue);
+});
+
+// Shows the digit array in outputfield
+function showDigit(calculation) {
+  outputField.innerHTML = calculation;
 }
 
-//Set the digit of clicked button at the beginning Array
-function addDigitToArr(digit) {
-  largeNumber.shift(digit);
-  let finalNumber = largeNumber.join("");
-  showDigit(finalNumber);
-}
-
-console.log(clearBtn);
-
-clearBtn.addEventListener("click", function () {
-  largeNumber.length = 0;
-  outputField.innerHTML = "";  
-  console.log(largeNumber.length);
-})
-
+// Show result
+equal.addEventListener("click", () => {
+  if (calculationValue.operator === "+") {
+    // Unary plus operator to convert them to numbers first
+    var result = +digitOne + +digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "-") {
+    var result = digitOne - digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "*") {
+    var result = digitOne * digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "/") {
+    var result = digitOne / digitTwo;
+    outputField.innerHTML = result;
+    console.log(result);
+  } else if (calculationValue.operator === "%") {
+    var result = (digitOne %= digitTwo);
+    outputField.innerHTML = result;
+    console.log(result);
+  }
+});
