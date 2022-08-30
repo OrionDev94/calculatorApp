@@ -23,7 +23,7 @@ body {
 
 #outputField {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 30px;
+  font-size: 3rem;
   color: rgb(170, 170, 170);
   height: 10rem;
   border-radius: 10px 10px 0 0;
