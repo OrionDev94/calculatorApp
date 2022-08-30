@@ -4,43 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Frontend//style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
     <title>Calcualtor by Speisequark</title>
   </head>
   <body>
-    <div>
+    <divc class="container">
+      <div class="calculator">
       <div id="outputField">
-        <output id="upper"></output>
-        <output id="lower">0</output>
       </div>
-      <div class="firstRow">
-        <button id="clear">C</button>
-        <button id="change">+/-</button>
-        <button class="operators" id="procent" value="%">%</button>
-        <button id="delete">D</button>
-      </div>
-      <div class="secondRow">
+      <div class="input">
+        <button class="outerEdge" id="clear">C</button>
+        <button class="outerEdge" id="change">+/-</button>
+        <button class="outerEdge operators" id="procent" value="%">%</button>
+        <button class="outerEdge fas fa-backspace" id="delete"></button>
         <button class="numbers" id="seven" value="7">7</button>
         <button class="numbers" id="eigth" value="8">8</button>
         <button class="numbers" id="nine" value="9">9</button>
-        <button class="operators" id="divide" value="/">/</button>
-      </div>
-      <div class="thirdRow">
+        <button class="outerEdge operators" id="divide" value="/">/</button>
         <button class="numbers" id="four" value="4">4</button>
         <button class="numbers" id="five" value="5">5</button>
         <button class="numbers" id="six" value="6">6</button>
-        <button class="operators" id="multiplication" value="*">*</button>
-      </div>
-      <div class="fourthRow">
+        <button class="outerEdge operators" id="multiplication" value="*">*</button>
         <button class="numbers" id="one" value="1">1</button>
         <button class="numbers" id="two" value="2">2</button>
         <button class="numbers" id="three" value="3">3</button>
-        <button class="operators" id="addition" value="+">+</button>
-      </div>
-      <div class="fifthRow">
+        <button class="outerEdge operators" id="addition" value="+">+</button>
         <button class="numbers" id="zero" value="0">0</button>
         <button id="point">.</button>
         <button id="equal">=</button>
-        <button class="operators" id="subtraction" value="-">-</button>
+        <button class="outerEdge operators" id="subtraction" value="-">-</button>
       </div>
     </div>
   </body>
