@@ -88,4 +88,5 @@ equal.addEventListener("click", () => {
     outputField.innerHTML = result;
     console.log(result);
   }
+  calculationValue.reset();
 });
