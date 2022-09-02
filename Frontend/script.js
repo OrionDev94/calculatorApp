@@ -22,7 +22,6 @@ var calculationValue = {
 var outputField = document.getElementById("outputField");
 outputField.innerHTML = 0;
 
-
 // Select all Buttons and add value to object
 document.querySelectorAll(".numbers").forEach((numberBtn) => {
   numberBtn.addEventListener("click", () => {
@@ -78,8 +77,11 @@ equal.addEventListener("click", () => {
   }
   calculationValue.reset();
   outputField.className = "upperOutput";
+  // If decimal number more than 4 decimal places 
+  if (result.toString().indexOf('.') !== -1) {
+    result = result.toFixed(4);
+  }
   outputField.innerHTML = result;
-  console.log(outputField.outerHTML);
 });
 
 // Keydown event
