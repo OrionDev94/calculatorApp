@@ -24,9 +24,9 @@ html, body {
 
 #outputField {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 5rem;
+  font-size: 3rem;
   color: rgb(170, 170, 170);
-  height: 13.5rem;
+  height: 10rem;
   min-height: 100px;
   border-radius: 10px 10px 0 0;
   display: flex;
@@ -39,13 +39,13 @@ html, body {
 
 .upperOutput {
   color: rgb(255,99,108) !important;
-  font-size: 7rem !important;
+  font-size: 4rem !important;
 }
 
 .input {
   display: flex;
   flex-wrap: wrap;
-  height: 35.4rem;
+  height: 33rem;
   min-height: 33rem;
   border-radius: 0.5rem;
   justify-content: space-between;
