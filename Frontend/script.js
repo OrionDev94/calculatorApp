@@ -3,7 +3,6 @@ let numberBtn = document.querySelector(".numbers"),
   operatorBtns = document.querySelector(".operators"),
   result = "",
   equal = document.querySelector("#equal"),
-  interim,
   digitOne,
   digitTwo;
 
@@ -19,14 +18,11 @@ var calculationValue = {
   },
 };
 
-// Display start2
+// Display start
 var outputField = document.getElementById("outputField");
 outputField.innerHTML = 0;
 
-function addValue(value) {
-  if ()
-    calculationValue.numberOne
-}
+
 // Select all Buttons and add value to object
 document.querySelectorAll(".numbers").forEach((numberBtn) => {
   numberBtn.addEventListener("click", () => {
@@ -49,7 +45,6 @@ document.querySelectorAll(".operators").forEach((operator) => {
     if (calculationValue.numberOne !== []) {
       calculationValue.operator = operator.value;
       showDigit(calculationValue.operator);
-      console.log(calculationValue.operator);
     }
   });
 });
@@ -71,15 +66,15 @@ function showDigit(calculation) {
 equal.addEventListener("click", () => {
   if (calculationValue.operator === "+") {
     // Unary plus operator to convert them to numbers first
-    var result = +digitOne + +digitTwo;
+    result = +digitOne + +digitTwo;
   } else if (calculationValue.operator === "-") {
-    var result = digitOne - digitTwo;
+    result = digitOne - digitTwo;
   } else if (calculationValue.operator === "*") {
-    var result = digitOne * digitTwo;
+    result = digitOne * digitTwo;
   } else if (calculationValue.operator === "/") {
-    var result = digitOne / digitTwo;
+    result = digitOne / digitTwo;
   } else if (calculationValue.operator === "%") {
-    var result = (digitOne %= digitTwo);
+    result = (digitOne %= digitTwo);
   }
   calculationValue.reset();
   outputField.className = "upperOutput";
@@ -88,8 +83,8 @@ equal.addEventListener("click", () => {
 });
 
 // Keydown event
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "1") {
-    showDigit(1);
-  }
-});
+// document.addEventListener("keydown", (evt) => {
+//   if (evt.key === "1") {
+//     showDigit(1);
+//   }
+// });
