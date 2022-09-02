@@ -19,11 +19,15 @@ var calculationValue = {
   },
 };
 
-// Display start
+// Display start2
 var outputField = document.getElementById("outputField");
 outputField.innerHTML = 0;
 
-// Select all Buttons with digit and converts them to text
+function addValue(value) {
+  if ()
+    calculationValue.numberOne
+}
+// Select all Buttons and add value to object
 document.querySelectorAll(".numbers").forEach((numberBtn) => {
   numberBtn.addEventListener("click", () => {
     if (calculationValue.operator !== null) {
@@ -31,12 +35,10 @@ document.querySelectorAll(".numbers").forEach((numberBtn) => {
       digitTwo = calculationValue.numberTwo.join("");
       outputField.innerHTML = calculationValue.numberTwo;
       showDigit(digitTwo);
-      console.log(digitTwo);
     } else {
       calculationValue.numberOne.push(numberBtn.value);
       digitOne = calculationValue.numberOne.join("");
       showDigit(digitOne);
-      console.log(digitOne);
     }
   });
 });
@@ -55,6 +57,7 @@ document.querySelectorAll(".operators").forEach((operator) => {
 // Clear all
 clearBtn.addEventListener("click", () => {
   calculationValue.reset();
+  outputField.classList.remove("upperOutput");
   outputField.innerHTML = 0;
   console.log(calculationValue);
 });
@@ -69,24 +72,24 @@ equal.addEventListener("click", () => {
   if (calculationValue.operator === "+") {
     // Unary plus operator to convert them to numbers first
     var result = +digitOne + +digitTwo;
-    outputField.innerHTML = result;
-    console.log(result);
   } else if (calculationValue.operator === "-") {
     var result = digitOne - digitTwo;
-    outputField.innerHTML = result;
-    console.log(result);
   } else if (calculationValue.operator === "*") {
     var result = digitOne * digitTwo;
-    outputField.innerHTML = result;
-    console.log(result);
   } else if (calculationValue.operator === "/") {
     var result = digitOne / digitTwo;
-    outputField.innerHTML = result;
-    console.log(result);
   } else if (calculationValue.operator === "%") {
     var result = (digitOne %= digitTwo);
-    outputField.innerHTML = result;
-    console.log(result);
   }
   calculationValue.reset();
+  outputField.className = "upperOutput";
+  outputField.innerHTML = result;
+  console.log(outputField.outerHTML);
+});
+
+// Keydown event
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "1") {
+    showDigit(1);
+  }
 });
