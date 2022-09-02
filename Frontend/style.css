@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: #686767;
 }
 
 .calculator {
@@ -21,18 +21,23 @@ body {
   min-width: 20rem;
 }
 
+.upperOutput {
+  color: rgb(255,99,108) !important;
+  font-size: 5rem !important;
+}
+
 #outputField {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 3rem;
   color: rgb(170, 170, 170);
   height: 10rem;
+  min-height: 100px;
   border-radius: 10px 10px 0 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: relative;
   background: rgb(45, 45, 45);
-  min-height: 100px;
   box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -62,12 +67,12 @@ body {
 .numbers,
 #point {
   color: rgb(170, 170, 170);
-  background-color: rgb(68, 68, 68);
+  background-color: transparent;
 }
 
 .outerEdge {
   color: rgb(253, 99, 110);
-  background-color: rgb(77, 77, 77);
+  background-color: transparent;
 }
 
 #equal {
