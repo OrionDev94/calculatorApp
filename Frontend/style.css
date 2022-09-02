@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
 
-body {
+html, body {
   margin: 0;
   box-sizing: border-box;
+  font-size: 100%;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: #686767;
 }
 
@@ -19,11 +20,6 @@ body {
   border-radius: 1rem;
   width: 20rem;
   min-width: 20rem;
-}
-
-.upperOutput {
-  color: rgb(255,99,108) !important;
-  font-size: 5rem !important;
 }
 
 #outputField {
@@ -39,6 +35,11 @@ body {
   position: relative;
   background: rgb(45, 45, 45);
   box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.upperOutput {
+  color: rgb(255,99,108) !important;
+  font-size: 4rem !important;
 }
 
 .input {
